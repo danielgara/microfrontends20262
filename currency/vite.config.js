@@ -8,7 +8,7 @@ export default defineConfig({
       filename: "remoteEntry.js",
       dts: false,
       exposes: {
-        "./mount": "./src/mount.js",
+        "./mount": "./src/main.js",
       },
     }),
   ],
