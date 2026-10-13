@@ -4,7 +4,7 @@ Four independent Vite apps composed with Module Federation (`@module-federation/
 
 | Folder | Role | Stack | Port |
 | --- | --- | --- | --- |
-| `host` | Shell: header, empty body, footer | Vanilla JavaScript | 5173 |
+| `host` | Shell: header, empty body, footer | Vue | 5173 |
 | `calculator` | Add and subtract | React | 5174 |
 | `news` | Four news items | Vue | 5175 |
 | `currency` | COP to USD converter | Vanilla JavaScript | 5176 |
