@@ -1,4 +1,5 @@
 <script setup>
+// Lista fija de cuatro noticias. No se pide a un servidor.
 const news = [
   {
     title: "Campus library extends weekend hours",
@@ -24,6 +25,7 @@ const news = [
     <h2>News</h2>
     <p class="tag">Vue</p>
     <ul>
+      <!-- Vue crea un li por cada noticia. key identifica cada elemento de la lista. -->
       <li v-for="item in news" :key="item.title">
         <h3>{{ item.title }}</h3>
         <p>{{ item.summary }}</p>
