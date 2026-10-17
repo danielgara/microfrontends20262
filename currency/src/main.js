@@ -1,5 +1,6 @@
 import "./style.css";
 
+// Tasa constante para simplificar el ejemplo.
 const COP_PER_USD = 3200;
 
 function format(value, currency) {
@@ -10,6 +11,10 @@ function format(value, currency) {
   }).format(value);
 }
 
+// La función mount dibuja/monta el conversor dentro del elemento HTML que se le pasa a la función (por lo general, se pasa un div).
+// En el archivo host/src/MicroFrontendView.vue línea 37 se monta este conversor llamando a esta función mount.
+// La función mount retorna una función que quita el formulario y su listener cuando el host desmonta este microfrontend.
+// En el archivo host/src/MicroFrontendView.vue línea 48 se desmonta este microfrontend llamando a la función que retorna la función mount.
 export function mount(el) {
   el.innerHTML = `
     <section class="currency">
@@ -53,11 +58,20 @@ export function mount(el) {
 
   form.addEventListener("submit", onSubmit);
 
+  // Esta función se llama cuando el host desmonta el microfrontend de conversión de divisas.
+  // Remueve el event listener del formulario y limpia el contenido del elemento.
   return () => {
     form.removeEventListener("submit", onSubmit);
     el.innerHTML = "";
   };
 }
 
+// El código siguiente busca un elemento id="app" en el HTML
+// Si existe, muestra automáticamente el conversor dentro de él mediante mount(standalone).
+// Si no existe, no hace nada, permitiendo que otra aplicación (el host) decida dónde y
+// Cuándo mostrar el conversor llamando a mount() con su propio contenedor.
 const standalone = document.querySelector("#app");
 if (standalone) mount(standalone);
+
+// Lo anterior permite que este archivo se ejecute como una aplicación independiente (localhost:5176)
+// O como un microfrontend en otra aplicación (ej: en el host).
