@@ -1,11 +1,13 @@
 import { useState } from "react";
 
+// Convierte el texto del input en número. Si el valor no es un número válido, usa 0.
 function readNumber(value) {
   const number = Number(value);
   return Number.isFinite(number) ? number : 0;
 }
 
 export default function App() {
+  // Los inputs guardan texto. El resultado empieza en null para mostrar "—" hasta que se pulse un botón.
   const [first, setFirst] = useState("0");
   const [second, setSecond] = useState("0");
   const [result, setResult] = useState(null);
@@ -33,6 +35,7 @@ export default function App() {
         </label>
       </div>
       <div className="actions">
+        {/* Cada botón guarda la suma o la resta. React vuelve a dibujar el resultado. */}
         <button type="button" onClick={() => setResult(readNumber(first) + readNumber(second))}>
           Add
         </button>
