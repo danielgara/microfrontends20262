@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from "vue";
 
+// loader fetches the remote. label is shown if that fetch fails.
 const props = defineProps({
   loader: { type: Function, required: true },
   label: { type: String, required: true },
@@ -11,6 +12,7 @@ const error = ref("");
 let unmountRemote;
 let alive = true;
 
+// Remotes may export mount as a named function or as the default export.
 function resolveMount(mod) {
   if (typeof mod.mount === "function") return mod.mount;
   if (typeof mod.default === "function") return mod.default;
@@ -18,6 +20,7 @@ function resolveMount(mod) {
   throw new Error("Remote did not expose mount()");
 }
 
+// Load the remote and render it into this element.
 onMounted(async () => {
   try {
     const mod = await props.loader();
@@ -29,6 +32,7 @@ onMounted(async () => {
   }
 });
 
+// Remove the remote when Vue destroys this component.
 onUnmounted(() => {
   alive = false;
   unmountRemote?.();
