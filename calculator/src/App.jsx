@@ -1,3 +1,5 @@
+// La calculadora es un microfrontend que se monta y desmonta cuando el host lo requiere.
+
 import { useState } from "react";
 
 // Convierte el texto del input en número. Si el valor no es un número válido, usa 0.

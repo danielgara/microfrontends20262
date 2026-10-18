@@ -1,3 +1,5 @@
+// Las noticias son un microfrontend que se monta y desmonta cuando el host lo requiere.
+
 <script setup>
 // Lista fija de cuatro noticias. No se pide a un servidor.
 const news = [

@@ -1,3 +1,5 @@
+// Las noticias son un microfrontend que se monta y desmonta cuando el host lo requiere.
+
 import { createApp } from "vue";
 import App from "./App.vue";
 import "./style.css";
@@ -19,3 +21,6 @@ export function mount(el) {
 // El host decide dónde mostrarlas llamando a mount() con su propio div.
 const standalone = document.querySelector("#app");
 if (standalone) mount(standalone);
+
+// Lo anterior permite que este archivo se ejecute como una aplicación independiente (localhost:5175)
+// O como un microfrontend en otra aplicación (ej: en el host).

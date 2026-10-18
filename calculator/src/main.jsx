@@ -1,3 +1,5 @@
+// La calculadora es un microfrontend que se monta y desmonta cuando el host lo requiere.
+
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import "./style.css";
@@ -19,3 +21,6 @@ export function mount(el) {
 // El host decide dónde mostrarla llamando a mount() con su propio div.
 const standalone = document.querySelector("#root");
 if (standalone) mount(standalone);
+
+// Lo anterior permite que este archivo se ejecute como una aplicación independiente (localhost:5174)
+// O como un microfrontend en otra aplicación (ej: en el host).

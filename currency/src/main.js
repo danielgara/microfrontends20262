@@ -1,3 +1,5 @@
+// El conversor de moneda es un microfrontend que se monta y desmonta cuando el host lo requiere.
+
 import "./style.css";
 
 // Tasa constante para simplificar el ejemplo.
